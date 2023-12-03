@@ -1,0 +1,1 @@
+print(sum([max([int(n)for n in l.split("\t")])-min([int(n) for n in l.split("\t")])for l in open("input").read().splitlines()]))
