@@ -1,0 +1,1 @@
+print(sum([int(2**(len(set([num for num in line.split(":")[1].split(" | ")[0].split(" ")if num != ""]).intersection(set([num for num in line.split(":")[1].split(" | ")[1].split(" ")if num != ""])))- 1))for line in open("input").read().splitlines()]))
