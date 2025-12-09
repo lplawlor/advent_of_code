@@ -4,7 +4,7 @@ const EXAMPLE: bool = false;
 const INPUT_PATH: &str = if EXAMPLE { "example" } else { "input" };
 
 /// Create a Vec of RangeInclusive structs from a file
-fn parse_ranges(file: String) -> Vec<RangeInclusive<u64>> {
+fn parse_ranges(file: &str) -> Vec<RangeInclusive<u64>> {
     // Each range is separated by a comma
     file.split(",")
         .map(|range_str| {
@@ -26,7 +26,7 @@ fn main() {
     let file = std::fs::read_to_string(INPUT_PATH)
         .expect("INPUT_PATH should contain the path of the input file");
 
-    let ranges = parse_ranges(file);
+    let ranges = parse_ranges(&file);
 
     // Simple invalid IDs are those formed from some sequence repeated twice.
     let mut simple_invalid_ids_sum = 0;

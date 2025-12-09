@@ -1,3 +1,8 @@
+const EXAMPLE: bool = false;
+const INPUT_PATH: &str = if EXAMPLE { "example" } else { "input" };
+const DIAL_START: i64 = 50;
+const DIAL_SIZE: i64 = 100;
+
 enum Instruction {
     Left(i64),
     Right(i64),
@@ -13,7 +18,7 @@ impl std::fmt::Display for Instruction {
 }
 
 /// Create a Vec of Instruction structs from a file
-fn parse_instructions(file: String) -> Vec<Instruction> {
+fn parse_instructions(file: &str) -> Vec<Instruction> {
     let mut instructions = vec![];
 
     for line in file.lines() {
@@ -36,15 +41,11 @@ fn parse_instructions(file: String) -> Vec<Instruction> {
     instructions
 }
 
-const INPUT_PATH: &str = "input";
-const DIAL_START: i64 = 50;
-const DIAL_SIZE: i64 = 100;
-
 fn main() {
     let file = std::fs::read_to_string(INPUT_PATH)
         .expect("INPUT_PATH should contain the path of the input file");
 
-    let instructions = parse_instructions(file);
+    let instructions = parse_instructions(&file);
 
     let mut dial = DIAL_START;
 
